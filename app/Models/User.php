@@ -44,8 +44,7 @@ class User extends Authenticatable
 
 
     public function websites(){
-        return $this->belongsToMany(Website::class)->as('subscriptions')->withTimestamps();
+        return $this->belongsToMany(Website::class, 'subscriptions')->withTimestamps();
     }
-
 
 }

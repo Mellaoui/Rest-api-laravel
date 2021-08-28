@@ -15,7 +15,7 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->unique(['website_id','user_id']);
+            //$table->unique(['website_id','user_id']);
             $table->foreignId('website_id');
             $table->foreignId('user_id');
             $table->timestamps();

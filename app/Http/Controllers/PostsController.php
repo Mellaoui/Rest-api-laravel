@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Events\PostAdded;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 
@@ -38,6 +40,7 @@ class PostsController extends Controller
 
     protected function validateData($request){
         $validated = $request->validate([
+            'website_id' => 'required',
             'title'=>'required',
             'description' => 'required'
         ]);
@@ -48,6 +51,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $post = Post::create($this->validateData($request));
+        Event::fire(new PostAdded());
     }
 
     /**

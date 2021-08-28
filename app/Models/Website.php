@@ -11,9 +11,8 @@ class Website extends Model
     use HasFactory;
 
     public function users(){
-        return $this->belongsToMany(User::class)->as('subscriptions')->withTimestamps() ;
+        return $this->belongsToMany(User::class, 'subscriptions')->withTimestamps();
     }
-
     public function posts(){
         return $this->hasMany(Post::class);
     }

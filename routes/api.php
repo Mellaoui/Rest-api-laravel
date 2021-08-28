@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::middleware('auth:sunctum')->post('/websites/{website}/subscribe',[WebsitesConstroller::class, 'subscribe']);
+Route::middleware('auth:sanctum')->post('/websites/{website}/subscribe',[WebsitesConstroller::class, 'subscribe']);
 
 Route::resource('/websites/{website}/posts',PostsController::class);
 
